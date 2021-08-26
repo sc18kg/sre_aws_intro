@@ -77,7 +77,7 @@ end
 close and save the file
 
 vagrant up
-```
+
 - Running the App
 
  - Install the dependencies Step by Step
