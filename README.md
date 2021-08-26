@@ -73,8 +73,24 @@ Vagrant.configure("2") do |config|
     config.vm.synced_folder "app", "/home/ubuntu/app"
     config.vm.provision "file", source: "~/Desktop/SpartaGlobalWork/sre_aws_intro/provision.sh", destination: "provision.sh"
 end
-
+```
 close and save the file
 
 vagrant up
+```
+- Running the App
+
+ - Install the dependencies Step by Step
+ ```
+sudo apt-get install nodejs -y
+sudo apt-get install npm -y
+sudo apt-get install python-software-properties -y
+curl -sL https://nodesource.com/setup_6.x | sudo -E bash -
+```
+- Make sure you navigate to the app directory
+```
+cd app
+sudo npm install pm2 -g
+npm install
+npm start
 ```
