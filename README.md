@@ -56,6 +56,9 @@ Continually defining reliability goals and working to improve the service, SRE b
 ![SDLCIMAGE](https://bigwater.consulting/wp-content/uploads/2019/04/SDLC_BWC.png)
 
 **Provisioning Files Using Vagrant**
+## What is Provisioning
+- Provisioning files is a systems management process that creates a new virtual machine on a server. You are are to use a file such as a Vagrantfile which allows a user to set up provisions and pass these to a new VM prior to loading.
+ 
 ## Steps to be completed in order.
 ```
 nano provision.sh
@@ -67,7 +70,8 @@ nano Vagrantfile
 Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/xenial64"
     config.vm.network "private_network", ip: "192.168.10.100"
-    config.vm.provision "file", path: "provision.sh"
+    config.vm.synced_folder "app", "/home/ubuntu/app"
+    config.vm.provision "file", source: "~/Desktop/SpartaGlobalWork/sre_aws_intro/provision.sh", destination: "provision.sh"
 end
 
 close and save the file
