@@ -26,7 +26,7 @@ Cloud computing is on-demand availablity of computer system resources. The advan
 AWS is an Amazon owned online cloud computing web service that provides customers with a variety of infrastructure as service, platform as service and packaged software as service. You are given access to hardware which is ran on their servers.
 
 
-**What is SDLS and states of SDLC?**
+**What is SDLC and states of SDLC?**
 - What is SDLC and what are the stages of it
 
   - Business Requirements - LOW
