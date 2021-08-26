@@ -13,15 +13,29 @@
 
 **SRE Intro**
 - What is the role of SRE?
+- Continually defining reliability goals and working to improve the service, SRE bridge the gap between developers and IT operations to create software that improves the reliability of systems in production, solving problems and responding to incidents.
+
 
 **Cloud Computing**
 - What is Cloud Computing and the benefits of using it?
+- Cloud computing is on-demand availablity of computer system resources. The advantages of this is cost effectiveness, Flexibility, Ease of USe and Robustness.
+
 
 **What is Amazon Web Services (AWS)?**
 - What is AWS and benefits of using it?
+- AWS is an Amazon owned online cloud computing web service that provides customers with a variety of infrastructure as service, platform as service and packaged software as service. You are given access to hardware which is ran on their servers.
+
 
 **What is SDLS and states of SDLC?**
 - What is SDLC and what are the stages of it
+
+- Business Requirements - LOW
+- Design and Develop - LOW
+- Testing - LOW/MEDIUM
+- Build - MEDIUM
+- Deploy - HIGH
+- Live Monitoring - HIGH
+
 
 **What are the Risk level at each stage of SDLC?**
 - Low
