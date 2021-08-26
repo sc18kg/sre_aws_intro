@@ -29,12 +29,12 @@ AWS is an Amazon owned online cloud computing web service that provides customer
 **What is SDLS and states of SDLC?**
 - What is SDLC and what are the stages of it
 
-- Business Requirements - LOW
-- Design and Develop - LOW
-- Testing - LOW/MEDIUM
-- Build - MEDIUM
-- Deploy - HIGH
-- Live Monitoring - HIGH
+  - Business Requirements - LOW
+  - Design and Develop - LOW
+  - Testing - LOW/MEDIUM
+  - Build - MEDIUM
+  - Deploy - HIGH
+  - Live Monitoring - HIGH
 
 
 **What are the Risk level at each stage of SDLC?**
