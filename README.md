@@ -42,3 +42,4 @@
 - Medium
 - High
 
+![SDLCIMAGE](https://bigwater.consulting/wp-content/uploads/2019/04/SDLC_BWC.png)
