@@ -54,3 +54,24 @@ Continually defining reliability goals and working to improve the service, SRE b
 - High
 
 ![SDLCIMAGE](https://bigwater.consulting/wp-content/uploads/2019/04/SDLC_BWC.png)
+
+**Provisioning Files Using Vagrant**
+## Steps to be completed in order.
+```
+nano provision.sh
+
+enter the commands which you would like to be completed when running vagrant up
+
+nano Vagrantfile
+
+Vagrant.configure("2") do |config|
+    config.vm.box = "ubuntu/xenial64"
+    config.vm.network "private_network", ip: "192.168.10.100"
+    config.vm.provision "file", source: "~/Desktop/SpartaGlobalWork/sre_aws_intro/provision.sh", destination: "provision.sh"
+    config.vm.provision "shell", inline: "chmod +x provision.sh", run: "always"
+    config.vm.provision "shell", inline: "./provision.sh", run: "always"
+end
+
+close and save the file
+
+vagrant up
