@@ -5,7 +5,7 @@
 
 #Key Advantages
 
-#Ease of USe
-#Flexibility
-#Robustness
-#Cost
+* Ease of Use
+* Flexibility
+* Robustness
+* Cost
