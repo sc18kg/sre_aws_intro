@@ -1,9 +1,9 @@
 # sre_aws_intro
-##Cloud Computing with AWS
-###SDLC Stages
-####Monitoring
+## Cloud Computing with AWS
+### SDLC Stages
+#### Monitoring
 
-#Key Advantages
+# Key Advantages
 
 * Ease of Use
 * Flexibility
