@@ -68,10 +68,19 @@ enter the commands which you would like to be completed when running vagrant up
 nano Vagrantfile
 
 Vagrant.configure("2") do |config|
-    config.vm.box = "ubuntu/xenial64"
-    config.vm.network "private_network", ip: "192.168.10.100"
-    config.vm.synced_folder "app", "/home/ubuntu/app"
-    config.vm.provision "file", source: "~/Desktop/SpartaGlobalWork/sre_aws_intro/provision.sh", destination: "provision.sh"
+    config.vm.define "db" do |db|
+        db.vm.box = "ubuntu/xenial64"
+        db.vm.network "private_network", ip: "192.168.10.150"
+        db.vm.synced_folder "db", "/home/ubuntu/app"
+        db.vm.provision "shell", path: "db/provision.sh"
+    end
+    config.vm.define "app" do |app|
+        app.vm.box = "ubuntu/xenial64"
+        app.vm.network "private_network", ip: "192.168.10.100"
+        app.vm.synced_folder "app", "/home/ubuntu/app"
+        app.vm.provision "shell", path: "provision.sh"
+    end
+    
 end
 ```
 close and save the file
@@ -85,12 +94,63 @@ vagrant up
 sudo apt-get install nodejs -y
 sudo apt-get install npm -y
 sudo apt-get install python-software-properties -y
-curl -sL https://nodesource.com/setup_6.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 ```
 - Make sure you navigate to the app directory to run the following
 ```
 cd app
 sudo npm install pm2 -g
 npm install
+npm start
+```
+## Running the db
+ - Install the dependencies Step by Step
+ ```
+sudo apt-get update -y
+sudo apt-get upgrade -y
+wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+sudo systemctl start mongodb
+sudo systemctl status mongodb
+sudo systemctl enable mongod
+ ```
+## Making an Environmental Variable 
+- To create an environmental variable you run:
+```
+export DB_HOST=192.168.10.150:27017/posts
+printenv DB_HOST
+```
+- Making it persistent it needs to be available in .bashrc
+```
+echo DB_HOST=192.168.10.150:27017/posts >> ~/.bashrc
+source ~/.bashrc
+```
+## Set up nginx as a Reverse Proxy Server
+```
+sudo nano /etc/nginx/sites-available/default
+location / {
+    proxy_pass http://localhost:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade
+    proxy_set_header Connection 'upgrade;
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+    
+}
+sudo nginx -t
+sudo systemctl restart nginx
+```
+
+## Once the two machines are running 
+```
+sudo nano /etc/mongo.conf
+ip 127.0.0.1 change to 0.0.0.0 port: 27017
+sudo systemctl restart mongod
+sudo systemctl enable mongod
+sudo systemctl status mongod
+
+node seeds/seed.js
 npm start
 ```
